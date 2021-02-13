@@ -1,6 +1,8 @@
 import React from 'react';
 import liff from '@line/liff';
-import logo from './logo.svg';
+import Button from '@material-ui/core/Button';
+// import { styled } from '@material-ui/core/styles';
+import {PrimaryButton, SecondaryButton} from './components/buttons'
 import './App.css';
 
 function App() {
@@ -46,20 +48,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <button className="button" onClick={sendMessage}>send message</button>
-        <button className="button" onClick={getUserInfo}>show user info</button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <PrimaryButton className="button" onClick={sendMessage}>send message</PrimaryButton>
+        <SecondaryButton className="button" onClick={getUserInfo}>show user info</SecondaryButton>
+        <Button className="button" variant="contained" color="primary">sample</Button>
+        <Button className="button" variant="contained" color="secondary">sample</Button>
       </header>
     </div>
   );

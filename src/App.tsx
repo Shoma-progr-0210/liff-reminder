@@ -1,8 +1,10 @@
 import React from 'react';
 import liff from '@line/liff';
 import Button from '@material-ui/core/Button';
-// import { styled } from '@material-ui/core/styles';
-import {PrimaryButton, SecondaryButton} from './components/buttons'
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { TertiaryButton, NomalButton } from './components/buttons'
+import Header from './components/header'
+import Home from './pages/home'
 import './App.css';
 
 function App() {
@@ -47,12 +49,14 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <PrimaryButton className="button" onClick={sendMessage}>send message</PrimaryButton>
-        <SecondaryButton className="button" onClick={getUserInfo}>show user info</SecondaryButton>
-        <Button className="button" variant="contained" color="primary">sample</Button>
-        <Button className="button" variant="contained" color="secondary">sample</Button>
-      </header>
+      <BrowserRouter>
+      <Header />
+      <div>
+      <Route exact path='/' component={Home}/>
+      <Route path='/send' render={ () => <TertiaryButton className="button" onClick={sendMessage}>send message</TertiaryButton> }/>
+      <Route path='/info' render={ () => <NomalButton className="button" onClick={getUserInfo}>show user info</NomalButton> }/>
+      </div>
+      </BrowserRouter>
     </div>
   );
 }

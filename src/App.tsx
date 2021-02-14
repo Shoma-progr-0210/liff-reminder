@@ -8,10 +8,12 @@ import Home from './pages/home'
 import './App.css';
 
 function App() {
+  liff.init({liffId: process.env.REACT_APP_LIFF_ID as string}) // LIFF IDをセットする
+  .then(() => {})
   /* 追加: メッセージ送信 */
   const sendMessage = () => {
-    liff.init({liffId: process.env.REACT_APP_LIFF_ID as string}) // LIFF IDをセットする
-      .then(() => {
+    // liff.init({liffId: process.env.REACT_APP_LIFF_ID as string}) // LIFF IDをセットする
+    //   .then(() => {
         if (!liff.isLoggedIn()) {
           liff.login({}) // ログインしていなければ最初にログインする
         } else if (liff.isInClient()) { // LIFFので動いているのであれば
@@ -24,13 +26,13 @@ function App() {
             window.alert('Error sending message: ' + error);
           });
         }
-      })
+      // })
   }
 
   /* 追加: UserProfileをAlertで表示 */
   const getUserInfo = () => {
-    liff.init({liffId: process.env.REACT_APP_LIFF_ID as string})
-      .then(() => {
+    // liff.init({liffId: process.env.REACT_APP_LIFF_ID as string})
+    //   .then(() => {
         if (!liff.isLoggedIn()) {
           liff.login({}) // ログインしていなければ最初にログインする
         } else if (liff.isInClient()) {
@@ -43,8 +45,7 @@ function App() {
               window.alert('Error sending message: ' + error);
             });
         }
-      })
-
+      // })
   }
 
   return (

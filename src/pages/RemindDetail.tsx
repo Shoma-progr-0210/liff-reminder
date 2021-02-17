@@ -81,9 +81,10 @@ export default function RemindDetail() {
 
     return (
     <Paper className={classes.paper}>
-        <Typography component="h1" variant="h4" align="center">
+        {/* <Typography component="h1" variant="h4" align="center">
           リマインド登録
-        </Typography>
+        </Typography> */}
+        <h1>リマインド登録</h1>
         <Stepper activeStep={activeStep} className={classes.stepper}>
           {steps.map((label) => (
             <Step key={label}>
@@ -101,7 +102,7 @@ export default function RemindDetail() {
                 リマインドを登録しました
               </Typography>
               <div>
-                <Link to="/" style={{ textDecoration: 'none' }}><SecondaryButton className={classes.homeButton}>Homeへ</SecondaryButton></Link>
+                <Link to="/" style={{ textDecoration: 'none' }}><SecondaryButton className={classes.homeButton}>TOPへ</SecondaryButton></Link>
               </div>
             </React.Fragment>
           ) : (

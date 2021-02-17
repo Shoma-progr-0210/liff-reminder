@@ -7,7 +7,7 @@ export default class Home extends React.Component {
   render() {
     return (
         <React.Fragment>
-            <h1>Home</h1>
+            <h1>RIMINDER</h1>
             <Grid container justify="center" spacing={3}>
             <Grid item xs={12}>
             <Link to="/create" style={{ textDecoration: 'none' }}><PrimaryButton className="button">/create</PrimaryButton></Link>

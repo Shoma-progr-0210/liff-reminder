@@ -1,16 +1,40 @@
 import React from 'react';
 import liff from '@line/liff';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+
 import { TertiaryButton, NomalButton } from './components/buttons'
-// import Header from './components/header'
-import Home from './pages/home'
+// import Header from './components/Header'
+import Copyright from './components/Copyright'
+import Home from './pages/Home'
+import RemindDetail from './pages/RemindDetail'
 import './App.css';
+
+const useStyles = makeStyles((theme) => ({
+  // appBar: {
+  //   position: 'relative',
+  // },
+  layout: {
+    width: 'auto',
+    textAlign: 'center',
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
+      width: 600,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
+  },
+}));
 
 function App() {
   if(liff.isInClient()){
     liff.init({liffId: process.env.REACT_APP_LIFF_ID as string}) // LIFF IDをセットする
     .then(() => {})
   }
+
+  const classes = useStyles();
+
   /* 追加: メッセージ送信 */
   const sendMessage = () => {
     if (!liff.isLoggedIn()) {
@@ -44,16 +68,18 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <React.Fragment>
       <BrowserRouter>
       {/* <Header /> */}
-      <div>
+      <main className={classes.layout} >
       <Route exact path='/' component={Home}/>
+      <Route path='/create' component={RemindDetail}/>
       <Route path='/send' render={ () => <TertiaryButton className="button" onClick={sendMessage}>send message</TertiaryButton> }/>
       <Route path='/info' render={ () => <NomalButton className="button" onClick={getUserInfo}>show user info</NomalButton> }/>
-      </div>
+      <Copyright />
+      </main>
       </BrowserRouter>
-    </div>
+    </React.Fragment>
   );
 }
 

@@ -11,11 +11,11 @@ const theme = createMuiTheme({
       textTransform: "none"
     }
   },
-  props: {
-    MuiTextField: {
-      variant: "filled"
-    }
-  },
+  // props: {
+  //   MuiTextField: {
+  //     variant: "filled"
+  //   }
+  // },
 });
 
 ReactDOM.render(

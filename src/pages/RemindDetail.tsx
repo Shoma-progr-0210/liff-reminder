@@ -45,22 +45,19 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'row-reverse',
       justifyContent: 'space-between',
     },
-    leftButtonsArea: {
-      // display: 'flex',
-      // justifyContent: 'flex-start',
-    },
-    rightButtonsArea: {
-      // display: 'flex',
-      // justifyContent: 'flex-end',
-    },
+    // leftButtonsArea: {
+    //   display: 'flex',
+    //   justifyContent: 'flex-start',
+    // },
+    // rightButtonsArea: {
+    //   display: 'flex',
+    //   justifyContent: 'flex-end',
+    // },
     backButton: {
       marginTop: theme.spacing(3),
     },
     nextButton: {
       marginTop: theme.spacing(3),
-    },
-    finishButtonsArea: {
-
     },
     homeButton: {
       marginTop: theme.spacing(3),

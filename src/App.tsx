@@ -76,8 +76,9 @@ function App() {
       <Route path='/create' component={RemindDetail}/>
       <Route path='/send' render={ () => <TertiaryButton className="button" onClick={sendMessage}>send message</TertiaryButton> }/>
       <Route path='/info' render={ () => <NomalButton className="button" onClick={getUserInfo}>show user info</NomalButton> }/>
-      <Copyright />
+      {/* <Copyright /> */}
       </main>
+      <Copyright />
       </BrowserRouter>
     </React.Fragment>
   );

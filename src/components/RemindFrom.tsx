@@ -4,6 +4,8 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
+import { RemindContext } from '../pages/RemindDetail';
+
 const labels = [
     {
       value: '',
@@ -46,20 +48,30 @@ const times = [
     },
     {
         value: 60,
-        label: '60分前',
+        label: '1時間前',
+    },
+    {
+        value: 120,
+        label: '2時間前',
+    },
+    {
+        value: 1440,
+        label: '1日前',
     },
     ];
 
 export default function RemindFrom() {
+    // const context = React.useContext(RemindContext);
+    const context = React.useContext(RemindContext);
     let date = new Date();
     // 日本時間に調整
     date.setHours(date.getHours() + 9);
     const dateStr = date.toJSON().split(":")[0] + ":" + date.toJSON().split(":")[1];
     return (
         <React.Fragment>
-            <Typography variant="h6" gutterBottom>
+            {/* <Typography variant="h6" gutterBottom>
                 入力
-            </Typography>
+            </Typography> */}
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={8}>
                     <TextField
@@ -69,6 +81,8 @@ export default function RemindFrom() {
                         label="予定名"
                         fullWidth
                         autoComplete="on"
+                        value={context.remindState.scheduleName}
+                        onChange={context.functions.onChangeScheduleName}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -77,7 +91,8 @@ export default function RemindFrom() {
                         select
                         name="label"
                         label="ラベル"
-                        // value={yourState}
+                        value={context.remindState.label}
+                        onChange={context.functions.onChangeLabel}
                         fullWidth
                     >
                         {labels.map((option) => (
@@ -90,21 +105,25 @@ export default function RemindFrom() {
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id="datetime"
-                        name="datetime"
+                        id="time"
+                        name="time"
                         label="予定時間"
                         type="datetime-local"
                         defaultValue={dateStr}
+                        value={context.remindState.time}
+                        onChange={context.functions.onChangeTime}
                         fullWidth
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id="remind"
+                        id="remindTime"
                         select
-                        name="remind"
+                        name="remindTime"
                         label="リマインド"
+                        value={context.remindState.remindTime}
+                        onChange={context.functions.onChangeRemindTime}
                         fullWidth
                     >
                         {times.map((option) => (
@@ -125,6 +144,8 @@ export default function RemindFrom() {
                         rows={4}
                         variant="outlined"
                         autoComplete="on"
+                        value={context.remindState.message}
+                        onChange={context.functions.onChangeMessage}
                     />
                 </Grid>
             </Grid>

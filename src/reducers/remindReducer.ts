@@ -1,3 +1,4 @@
+import initialRemindState from "../states/remindState"
 
 const remindReducer = (state: any, action: any) => {
     switch (action.type) {
@@ -31,6 +32,8 @@ const remindReducer = (state: any, action: any) => {
                 ...state,
                 notification: action.notification,
             }
+        case "resetState":
+            return initialRemindState
     }
 }
 

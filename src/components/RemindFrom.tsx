@@ -63,10 +63,13 @@ const times = [
 export default function RemindFrom() {
     // const context = React.useContext(RemindContext);
     const context = React.useContext(RemindContext);
-    let date = new Date();
-    // 日本時間に調整
-    date.setHours(date.getHours() + 9);
-    const dateStr = date.toJSON().split(":")[0] + ":" + date.toJSON().split(":")[1];
+    if (!context.remindState.time){
+        let date = new Date();
+        // 日本時間に調整
+        date.setHours(date.getHours() + 9);
+        const dateStr = date.toJSON().split(":")[0] + ":" + date.toJSON().split(":")[1];
+        context.dispatch({type: "timeChange", time: dateStr});
+    }
     return (
         <React.Fragment>
             {/* <Typography variant="h6" gutterBottom>
@@ -109,7 +112,6 @@ export default function RemindFrom() {
                         name="time"
                         label="予定時間"
                         type="datetime-local"
-                        defaultValue={dateStr}
                         value={context.remindState.time}
                         onChange={context.functions.onChangeTime}
                         fullWidth

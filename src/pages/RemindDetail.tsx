@@ -124,6 +124,24 @@ export default function RemindDetail() {
     [dispatch]
   )
 
+  // const resetState = useCallback(
+  //   () => {
+  //     dispatch(RemindActions.resetStateAction())
+  //   },
+  //   [dispatch]
+  // )
+
+  const register = () => {
+    const method = "POST";
+    const body = JSON.stringify(remindState);
+    const headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    };
+    fetch("https://line-bot-echo-202101301430.herokuapp.com/register", {method, headers, body}).then((res)=> res.json()).then().catch();
+
+  }
+
   const value = {
     remindState: remindState,
     dispatch: dispatch,
@@ -169,12 +187,21 @@ export default function RemindDetail() {
                 {getStepContent(activeStep)}
             </RemindContext.Provider>
             <div className={classes.buttonsArea}>
-              <SecondaryButton
+              {activeStep === steps.length - 1 ? (
+                <SecondaryButton
+                onClick={register}
+                className={classes.nextButton}
+                >
+                  登録
+                </SecondaryButton>
+              ) : (
+                <SecondaryButton
                 onClick={handleNext}
                 className={classes.nextButton}
-              >
-                {activeStep === steps.length - 1 ? '確認' : '次へ'}
-              </SecondaryButton>
+                >
+                  確認
+                </SecondaryButton>
+              )}
               {activeStep !== 0 ? (
                 <NomalButton onClick={handleBack} className={classes.backButton}>
                   戻る

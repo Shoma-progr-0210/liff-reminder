@@ -40,3 +40,9 @@ export const notificationChangeAction = (notification: boolean) => {
     notification: notification,
   }
 }
+
+export const resetStateAction = () => {
+  return {
+    type: "resetState"
+  }
+}

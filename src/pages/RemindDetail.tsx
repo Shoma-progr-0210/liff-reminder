@@ -136,10 +136,10 @@ export default function RemindDetail() {
     const body = JSON.stringify(remindState);
     const headers = {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json; charset=utf-8'
     };
-    fetch("https://line-bot-echo-202101301430.herokuapp.com/register", {method, headers, body}).then((res)=> res.json()).then().catch();
-
+    fetch("https://line-bot-echo-202101301430.herokuapp.com/register", {method:method, headers:headers, body:body}).then((res)=> res.json()).then().catch();
+    handleNext();
   }
 
   const value = {

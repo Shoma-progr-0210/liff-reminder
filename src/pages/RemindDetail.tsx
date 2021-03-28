@@ -138,8 +138,9 @@ export default function RemindDetail() {
       // 'Accept': 'application/json',
       'Content-Type': 'application/json; charset=utf-8'
     };
-    // fetch("https://line-bot-echo-202101301430.herokuapp.com/register", {method:method, headers:headers, body:body}).then((res)=> res.json()).then().catch();
-    fetch("https://line-bot-echo-202101301430.herokuapp.com/register", {method:"POST", headers:headers, body:body}).then((res)=> res.json()).then().catch();
+    console.log(body)
+    console.log(typeof(body))
+    fetch("https://line-bot-echo-202101301430.herokuapp.com/register", {method:method, headers:headers, body:body}).then((res)=> res.json()).then().catch();
     handleNext();
   }
 

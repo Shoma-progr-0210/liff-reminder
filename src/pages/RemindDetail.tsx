@@ -137,11 +137,11 @@ export default function RemindDetail() {
     const headers = {
       // 'Accept': 'application/json',
       'Content-Type': 'application/json; charset=utf-8'
+      // 'Content-Type': 'application/json'
     };
     console.log(body)
     console.log(typeof(body))
-    fetch("https://line-bot-echo-202101301430.herokuapp.com/register", {method:method, headers:headers, body:body}).then((res)=> res.json()).then().catch();
-    handleNext();
+    fetch("https://line-bot-echo-202101301430.herokuapp.com/register", {method:method, headers:headers, body:body}).then((res)=> res.json()).then(() => handleNext()).catch();
   }
 
   const value = {

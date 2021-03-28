@@ -141,7 +141,7 @@ export default function RemindDetail() {
     };
     console.log(body)
     console.log(typeof(body))
-    fetch("https://line-bot-echo-202101301430.herokuapp.com/register", {method:method, headers:headers, body:body}).then((res)=> res.json()).then(() => handleNext()).catch();
+    fetch("https://line-bot-echo-202101301430.herokuapp.com/register", {method:method, headers:headers, body:JSON.stringify({'test': 'hello'})}).then((res)=> res.json()).then(() => handleNext()).catch();
   }
 
   const value = {
